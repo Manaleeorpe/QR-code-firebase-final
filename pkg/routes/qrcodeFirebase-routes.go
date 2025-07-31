@@ -1,20 +1,31 @@
 package routes
 
 import (
-	"qr-code-generator/pkg/controllers"
+    "net/http"
+    "qr-code-generator/pkg/controllers"
 
-	"github.com/gorilla/mux"
+    "github.com/gorilla/mux"
 )
 
-var RegisterQRCodeGeneratorFirebasestoreRoutes = func(router *mux.Router) {
-	router.HandleFunc("/firebase/qrcode/generate", controllers.QrcodeGenerateFirebase).Methods("POST")
-	router.HandleFunc("/firebase/qrcode/{token}", controllers.ValidateQRCodeFirebase).Methods("GET")
-
+// Base URL handler - responds with "hi"
+func SayHiHandler(w http.ResponseWriter, r *http.Request) {
+    w.WriteHeader(http.StatusOK)
+    w.Write([]byte("hi"))
 }
 
+// Register all your Firebase QR code related routes here
+var RegisterQRCodeGeneratorFirebasestoreRoutes = func(router *mux.Router) {
+    router.HandleFunc("/", SayHiHandler).Methods("GET") // base URL route
+    router.HandleFunc("/firebase/qrcode/generate", controllers.QrcodeGenerateFirebase).Methods("POST")
+    router.HandleFunc("/firebase/qrcode/{token}", controllers.ValidateQRCodeFirebase).Methods("GET")
+}
+
+// If you have other QR code routes, you can register them he
+
+// SetupRoutes returns a mux.Router with all routes registered
 func SetupRoutes() *mux.Router {
-	router := mux.NewRouter()
-	RegisterQRCodeGeneratorstoreRoutes(router)         // your other routes
-	RegisterQRCodeGeneratorFirebasestoreRoutes(router) // your firebase routes
-	return router
+    router := mux.NewRouter()
+    RegisterQRCodeGeneratorstoreRoutes(router)
+    RegisterQRCodeGeneratorFirebasestoreRoutes(router)
+    return router
 }
