@@ -16,6 +16,7 @@ func main() {
 	db := config.GetDB()
 	models.SetDB(db)
 	db.AutoMigrate(&models.QRCode{})*/
+	log.Println("something started")
 	config.ConnectFirebase()
 
 	/* Use Gorilla Mux
@@ -31,7 +32,8 @@ func main() {
 		AllowedHeaders:   []string{"*"},
 	})
 	handler := c.Handler(router)
-
+	
+	
 	log.Println("Starting server on localhost:8080...")
 	log.Fatal(http.ListenAndServe("localhost:8080", handler)) // Use mux router here
 
