@@ -3,6 +3,7 @@ package handler
 import (
   "fmt"
   "net/http"
+  "log"		
 )
 func init() {
 	// initialize your mux router using existing routes
