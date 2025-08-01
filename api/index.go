@@ -1,9 +1,12 @@
+package handler
+
 import (
+	"fmt"
 	"log"
 	"net/http"
 )
 
-var router http.Handler
+//var router http.Handler
 
 func init() {
 	// initialize your mux router using existing routes
@@ -12,5 +15,21 @@ func init() {
 }
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	router.ServeHTTP(w, r)
+	log.Println("Router initialized from handler")
+	fmt.Fprintf(w, "<h1>Hello from Go!</h1>")
 }
+
+/*func Handler(w http.ResponseWriter, r *http.Request) {
+	router.ServeHTTP(w, r)
+}*/
+
+/*package handler
+
+import (
+  "fmt"
+  "net/http"
+)
+
+func Handler(w http.ResponseWriter, r *http.Request) {
+  fmt.Fprintf(w, "<h1>Hello from Go!</h1>")
+}*/
