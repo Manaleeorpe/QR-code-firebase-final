@@ -32,7 +32,12 @@ func main() {
 	})
 	handler := c.Handler(router)
 
-	log.Println("Starting server on localhost:8080...")
-	log.Fatal(http.ListenAndServe("localhost:8080", handler)) // Use mux router here
+	//log.Println("Starting server on localhost:8080...")
+	//log.Fatal(http.ListenAndServe("localhost:8080", handler)) // Use mux router here
 
+	if port == "" {
+	    port = "3000"
+	}
+	
+	log.Fatal(app.Listen("0.0.0.0:" + port))
 }
