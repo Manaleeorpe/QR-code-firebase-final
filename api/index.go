@@ -1,17 +1,10 @@
 package handler
-
+ 
 import (
-	"net/http"
-	"qr-code-generator/pkg/routes"
+  "fmt"
+  "net/http"
 )
-
-var router http.Handler
-
-func init() {
-	// initialize your mux router using existing routes
-	router = routes.SetupRoutes()
-}
-
+ 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	router.ServeHTTP(w, r)
+  fmt.Fprintf(w, "<h1>Hello from Go!</h1>")
 }
