@@ -30,7 +30,7 @@ func (code *QRCode) GenerateFirebase(ctx context.Context) ([]byte, error) {
 		return nil, err1
 	}
 	//URL to be generated automatically and to be added as a URL to the QR code
-	code.URL = "http://localhost:8080/firebase/qrcode/" + token
+	code.URL = "https://qr-code-firebase-final-production.up.railway.app/firebase/qrcode/" + token
 
 	code.Token = token
 
