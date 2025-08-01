@@ -2,7 +2,6 @@ package main
 
 import (
 	"log"
-	"net/http"
 
 	"qr-code-generator/pkg/config"
 	"qr-code-generator/pkg/routes"
