@@ -9,8 +9,7 @@ import (
 
 // Base URL handler - responds with "hi"
 func SayHiHandler(w http.ResponseWriter, r *http.Request) {
-    w.WriteHeader(http.StatusOK)
-    w.Write([]byte("hi"))
+   fmt.Fprintf(w, "<h1>Hello from Go!</h1>")
 }
 
 // Register all your Firebase QR code related routes here
